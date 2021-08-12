@@ -97,7 +97,7 @@ Optional::
     ckanext.s3filestore.addressing_style = path
 
     # Set this parameter only if you want to use Minio as a filestore service instead of S3.
-    ckanext.s3filestore.host_name = http://minio-service.com
+    ckanext.s3filestore.endpoint_url = http://minio-service.com
 
     # To mask the S3 endpoint with your own domain/endpoint when serving URLs to end users.
     # This endpoint should be capable of serving S3 objects as if it were an actual bucket.

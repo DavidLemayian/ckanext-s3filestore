@@ -50,7 +50,7 @@ class BaseS3Uploader(object):
         self.s_key = config.get('ckanext.s3filestore.aws_secret_access_key')
         self.region = config.get('ckanext.s3filestore.region_name')
         self.signature = config.get('ckanext.s3filestore.signature_version')
-        self.host_name = config.get('ckanext.s3filestore.host_name', None)
+        self.endpoint_url = config.get('ckanext.s3filestore.endpoint_url', None)
         self.download_proxy = \
             config.get('ckanext.s3filestore.download_proxy', None)
         self.acl = config.get('ckanext.s3filestore.acl', 'public-read')
@@ -72,7 +72,7 @@ class BaseS3Uploader(object):
         return \
             self.get_s3_session()\
                 .resource('s3',
-                          endpoint_url=self.host_name,
+                          endpoint_url=self.endpoint_url,
                           config=BotoConfig(
                               signature_version=self.signature,
                               s3={'addressing_style': self.addressing_style}))
@@ -81,7 +81,7 @@ class BaseS3Uploader(object):
         return \
             self.get_s3_session()\
                 .client('s3',
-                        endpoint_url=self.host_name,
+                        endpoint_url=self.endpoint_url,
                         config=BotoConfig(
                             signature_version=self.signature,
                             s3={'addressing_style': self.addressing_style}),
